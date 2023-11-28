@@ -84,25 +84,39 @@ const winningSituation2 = () => {
 let playAgain = true;
 // Objective 1 complete
 
-if (playAgain) {
-  rl.question(
-    `Welcome to Rock, Paper, Scissor Game. Please key in your choice.`,
-    function (playerChoice) {
-      const result = winningSituation(playerChoice.toUpperCase());
-      console.log(result);
-      rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
-        playAgain = false
-        if (answer.toLowerCase() === "yes") {
-          playAgain = true;
-        } else {
-          playAgain = false;
+rl.question(
+  `Welcome to Rock, Paper, Scissor Game. Please choose a game mode. (Please key in "p" represent for Player vs Computer or kay in "c" represent of Computer vs Computer).`,
+  function (gameMode) {
+    if (gameMode === "p") {
+      rl.question(
+        `Please choose a option(rock, paper, scissor)`,
+        function (playerChoice) {
+          if (playerChoice === "rock" || "paper" || "scissor") {
+            const result = winningSituation(playerChoice.toUpperCase());
+            console.log(result);
+            rl.close();
+          } else {
+            console.log("You key in the wrong option");
+          }
         }
+      );
+    } else if (gameMode === "c") {
+      rl.question(`Start the game for Computer vs Computer`, () => {
+        console.log(winningSituation2());
+        rl.close();
       });
     }
-  );
-}
 
-
+    rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
+      playAgain = false;
+      if (answer.toLowerCase() === "yes") {
+        playAgain = true;
+      } else {
+        playAgain = false;
+      }
+    });
+  }
+);
 
 rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
   if (answer.toLowerCase() === "yes") {
@@ -113,7 +127,7 @@ rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
 });
 
 //objective 2 completed
-// rl.question(`Start the game for Computer vs Computer`, () => {
-//   console.log(winningSituation2());
-//   rl.close();
-// });
+rl.question(`Start the game for Computer vs Computer`, () => {
+  console.log(winningSituation2());
+  rl.close();
+});
