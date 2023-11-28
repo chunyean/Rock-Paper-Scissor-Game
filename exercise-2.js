@@ -46,6 +46,8 @@ const gameRule = {
 
 const keyOfGameRule = Object.keys(gameRule);
 
+// let playAgain = true;
+
 // Common Function
 const randomIdx = () => Math.floor(Math.random() * 3);
 
@@ -79,16 +81,36 @@ const winningSituation2 = () => {
     }
   }
 };
-
+let playAgain = true;
 // Objective 1 complete
-rl.question(
-  `Welcome to Rock, Paper, Scissor Game. Please key in your choice.`,
-  function (playerChoice) {
-    const result = winningSituation(playerChoice.toUpperCase());
-    console.log(result);
-    rl.close();
+
+if (playAgain) {
+  rl.question(
+    `Welcome to Rock, Paper, Scissor Game. Please key in your choice.`,
+    function (playerChoice) {
+      const result = winningSituation(playerChoice.toUpperCase());
+      console.log(result);
+      rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
+        playAgain = false
+        if (answer.toLowerCase() === "yes") {
+          playAgain = true;
+        } else {
+          playAgain = false;
+        }
+      });
+    }
+  );
+}
+
+
+
+rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
+  if (answer.toLowerCase() === "yes") {
+    playAgain = true;
+  } else {
+    playAgain = false;
   }
-);
+});
 
 //objective 2 completed
 // rl.question(`Start the game for Computer vs Computer`, () => {
