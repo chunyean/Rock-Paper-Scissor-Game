@@ -81,7 +81,7 @@ const winningSituation2 = () => {
     }
   }
 };
-let playAgain = true;
+
 // Objective 1 complete
 
 rl.question(
@@ -117,17 +117,3 @@ rl.question(
     });
   }
 );
-
-rl.question(`Do you want to play again?(Yes or No)`, function (answer) {
-  if (answer.toLowerCase() === "yes") {
-    playAgain = true;
-  } else {
-    playAgain = false;
-  }
-});
-
-//objective 2 completed
-rl.question(`Start the game for Computer vs Computer`, () => {
-  console.log(winningSituation2());
-  rl.close();
-});
