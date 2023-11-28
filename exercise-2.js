@@ -52,10 +52,10 @@ const randomIdx = () => Math.floor(Math.random() * 3);
 //Objective 1 function
 const winningSituation = (firstPlayer) => {
   secondPlayer = keyOfGameRule[randomIdx()];
-  if (winningRule.hasOwnProperty(firstPlayer)) {
+  if (gameRule.hasOwnProperty(firstPlayer)) {
     if (firstPlayer === secondPlayer) {
-      return "It's a Tie Game";
-    } else if (winningRule[firstPlayer] === secondPlayer) {
+      return ` Player and Computer choose the same ${secondPlayer}. This round is a Tie Game`;
+    } else if (gameRule[firstPlayer] === secondPlayer) {
       return `Player choose ${firstPlayer} and Computer choose ${secondPlayer}. This round Player Win.`;
     } else {
       return `Player choose ${firstPlayer} and Computer choose ${secondPlayer}. This round Computer Win.`;
@@ -69,10 +69,10 @@ const winningSituation = (firstPlayer) => {
 const winningSituation2 = () => {
   firstPlayer = keyOfGameRule[randomIdx()];
   secondPlayer = keyOfGameRule[randomIdx()];
-  if (winningRule.hasOwnProperty(firstPlayer)) {
+  if (gameRule.hasOwnProperty(firstPlayer)) {
     if (firstPlayer === secondPlayer) {
-      return "It's a Tie Game";
-    } else if (winningRule[firstPlayer] === secondPlayer) {
+      return ` Computer and Computer2 choose the same ${secondPlayer}. This round is a Tie Game`;
+    } else if (gameRule[firstPlayer] === secondPlayer) {
       return `Computer choose ${firstPlayer} and Computer2 choose ${secondPlayer}. This round Computer Win.`;
     } else {
       return `Comouter choose ${firstPlayer} and Computer2 choose ${secondPlayer}. This round Computer2 Win.`;
@@ -81,14 +81,14 @@ const winningSituation2 = () => {
 };
 
 // Objective 1 complete
-// rl.question(
-//   `Welcome to Rock, Paper, Scissor Game. Please key in your choice.`,
-//   function (playerChoice) {
-//     const result = winningSituation(playerChoice.toUpperCase());
-//     console.log(result);
-//     rl.close();
-//   }
-// );
+rl.question(
+  `Welcome to Rock, Paper, Scissor Game. Please key in your choice.`,
+  function (playerChoice) {
+    const result = winningSituation(playerChoice.toUpperCase());
+    console.log(result);
+    rl.close();
+  }
+);
 
 //objective 2 completed
 // rl.question(`Start the game for Computer vs Computer`, () => {
