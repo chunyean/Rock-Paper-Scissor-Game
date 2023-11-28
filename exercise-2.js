@@ -55,7 +55,7 @@ const winningSituation = (firstPlayer) => {
   if (gameRule.hasOwnProperty(firstPlayer)) {
     if (firstPlayer === secondPlayer) {
       return ` Player and Computer choose the same ${secondPlayer}. This round is a Tie Game`;
-    } else if (gameRule[firstPlayer] === secondPlayer) {
+    } else if (gameRule[firstPlayer].winAgainst === secondPlayer) {
       return `Player choose ${firstPlayer} and Computer choose ${secondPlayer}. This round Player Win.`;
     } else {
       return `Player choose ${firstPlayer} and Computer choose ${secondPlayer}. This round Computer Win.`;
@@ -72,7 +72,7 @@ const winningSituation2 = () => {
   if (gameRule.hasOwnProperty(firstPlayer)) {
     if (firstPlayer === secondPlayer) {
       return ` Computer and Computer2 choose the same ${secondPlayer}. This round is a Tie Game`;
-    } else if (gameRule[firstPlayer] === secondPlayer) {
+    } else if (gameRule[firstPlayer].winAgainst === secondPlayer) {
       return `Computer choose ${firstPlayer} and Computer2 choose ${secondPlayer}. This round Computer Win.`;
     } else {
       return `Comouter choose ${firstPlayer} and Computer2 choose ${secondPlayer}. This round Computer2 Win.`;
